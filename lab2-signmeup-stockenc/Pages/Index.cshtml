@@ -1,0 +1,22 @@
+﻿@page                      
+@model IndexModel          //Usded AI to give me options on how to change font size of paragraph, and to make the sign up button more appealing than just a bullet point as well as centering it in the middle of the page
+@{                         //AI was also used to show me how to change the color of the sign up button
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Pep Rally & Bonfire</h1>
+    <p style ="font-size:16px;">
+        This event is going to be held on homecoming weekend, we encourage students to sign up and meet other students from different classes</p >
+</div>
+
+
+<style>
+    a.btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+<a asp-page="/Signup" class="btn btn-primary btn-lg">
+    <i class="bi bi-pencil-square"></i> Sign Up
+</a>

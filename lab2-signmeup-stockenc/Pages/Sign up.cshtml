@@ -1,0 +1,81 @@
+﻿@page
+@model lab2_signmeup_stockenc.Pages.Sign_upModel //Used AI to show me how to use Java functions with the section script (such as cleaForm() and populateForm() ) with the razor syntax
+@{
+    ViewData["Title"] = "Signup";
+}
+<h1> Sign Up form</h1>
+
+<form method="post">
+    <div>
+        <label>Name:</label>
+        <input asp-for="SignupData.Name" />
+        <span asp-validation-for="SignupData.Name"></span>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input asp-for="SignupData.Email" />
+        <span asp-validation-for="SignupData.Email"></span>
+    </div>
+
+    <div>
+        <label>Year:</label>
+        <select asp-for="SignupData.Year">
+            <option value="">-- Select Year --</option>
+            <option>Freshman</option>
+            <option>Sophomore</option>
+            <option>Junior</option>
+            <option>Senior</option>
+        </select>
+        <span asp-validation-for="SignupData.Year"></span>
+    </div>
+
+    <div>
+        <label>Major:</label>
+        <input asp-for="SignupData.Major" />
+    </div>
+
+    <div>
+        <label>RSVP:</label>
+        <select asp-for="SignupData.RSVP">
+            <option value="">-- Select --</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <span asp-validation-for="SignupData.RSVP"></span>
+    </div>
+
+    <div>
+        <label>T-shirt Size:</label>
+        <input asp-for="SignupData.TshirtSize" />
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+        <button type="button" onclick="populateForm()">Populate</button>
+    </div>
+</form>
+
+@if (Model.ConfirmationMessage != null)
+{
+    <p style="color: green">@Model.ConfirmationMessage</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function clearForm() {
+            document.querySelectorAll('input, select').forEach(el => el.value = '');
+        }
+
+        function populateForm() {
+            document.querySelector('[name="SignupData.Name"]').value = "Test User";
+            document.querySelector('[name="SignupData.Email"]').value = "test@example.com";
+            document.querySelector('[name="SignupData.Year"]').value = "Junior";
+            document.querySelector('[name="SignupData.Major"]').value = "Computer Science";
+            document.querySelector('[name="SignupData.RSVP"]').value = "Yes";
+            document.querySelector('[name="SignupData.TshirtSize"]').value = "M";
+        }
+    </script>
+}
+
